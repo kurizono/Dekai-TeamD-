@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization.Json;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class viewchange : MonoBehaviour
 {
     public GameObject white, black, blue, red;
+    public Button Left, Right;
     // Start is called before the first frame update
     void Start()
     {
