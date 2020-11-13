@@ -7,21 +7,20 @@ using UnityEngine.UI;
 public class viewchange : MonoBehaviour
 {
     //ゲームオブジェクト、ボタンの設定
-    public GameObject north, east, south, west;
+    public GameObject North, East, South, West;
     public Button Left, Right;
 
     int compass = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        //有効・無効設定
-        north.SetActive(true);
-        east.SetActive(false);
-        south.SetActive(false);
-        west.SetActive(false);
-        
-        //ボタンを押した時の動作
+        //ボタンの有効・無効設定
+        North.SetActive(true);
+        East.SetActive(false);
+        South.SetActive(false);
+        West.SetActive(false);
+        //ボタンを押したときの動作
         Left.onClick.AddListener(Left_Click);
         Right.onClick.AddListener(Right_Click);
     }
@@ -29,83 +28,52 @@ public class viewchange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //矢印キーを押した時の動作
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            north.SetActive(false);
-            east.SetActive(true);
-            south.SetActive(false);
-            west.SetActive(false);
-            Debug.Log("east");
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            north.SetActive(false);
-            east.SetActive(false);
-            south.SetActive(true);
-            west.SetActive(false);
-            Debug.Log("south");
-        }
-        else if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            north.SetActive(false);
-            east.SetActive(false);
-            south.SetActive(false);
-            west.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            north.SetActive(true);
-            east.SetActive(false);
-            south.SetActive(false);
-            west.SetActive(false);
-        }
+        
+     
     }
-
-    //左ボタン押したらどうなるか
+    //ボタンを押したらどうなるか
     private void Left_Click()
     {
         compass = (compass + 3) % 4;
-        Compass_Check();
+        CompassCheck();
     }
-    //右ボタン押したらどうなるか
     private void Right_Click()
     {
         compass = (compass + 1) % 4;
-        Compass_Check();
+        CompassCheck();
     }
-    //コンパスを確認して、向きを変えたい
-    private void Compass_Check()
+    //コンパスを確認して向きを変えたい
+    private void CompassCheck()
     {
         switch (compass)
         {
             case 0:
-                north.SetActive(true);
-                east.SetActive(false);
-                south.SetActive(false);
-                west.SetActive(false);
-                Debug.Log("north");
+                North.SetActive(true);
+                East.SetActive(false);
+                South.SetActive(false);
+                West.SetActive(false);
+                Debug.Log("North");
                 break;
             case 1:
-                north.SetActive(false);
-                east.SetActive(true);
-                south.SetActive(false);
-                west.SetActive(false);
-                Debug.Log("east");
+                North.SetActive(false);
+                East.SetActive(true);
+                South.SetActive(false);
+                West.SetActive(false);
+                Debug.Log("East");
                 break;
             case 2:
-                north.SetActive(false);
-                east.SetActive(false);
-                south.SetActive(true);
-                west.SetActive(false);
-                Debug.Log("south");
+                North.SetActive(false);
+                East.SetActive(false);
+                South.SetActive(true);
+                West.SetActive(false);
+                Debug.Log("South");
                 break;
             case 3:
-                north.SetActive(false);
-                east.SetActive(false);
-                south.SetActive(false);
-                west.SetActive(true);
-                Debug.Log("west");
+                North.SetActive(false);
+                East.SetActive(false);
+                South.SetActive(false);
+                West.SetActive(true);
+                Debug.Log("West");
                 break;
         }
     }
