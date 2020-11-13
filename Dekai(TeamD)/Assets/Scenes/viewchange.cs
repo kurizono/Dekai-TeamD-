@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class viewchange : MonoBehaviour
 {
+    //ゲームオブジェクト、ボタンの設定
     public GameObject white, black, blue, red;
     public Button Left, Right;
+    
     // Start is called before the first frame update
     void Start()
     {
+        //ボタンの有効・無効設定
         white.SetActive(true);
         black.SetActive(false);
         blue.SetActive(false);
@@ -20,6 +23,7 @@ public class viewchange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //矢印キーを押した時の動作
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             white.SetActive(false);
