@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class viewchange : MonoBehaviour
 {
+    itemget itemgetcs;
     //ゲームオブジェクト、ボタンの設定
     public GameObject North, East, South, West;
     public Button Left, Right;
-
-    int compass = 0;
+    public Text chat;
+    public int compass = 0;
     
     // Start is called before the first frame update
     void Start()
     {
+        itemgetcs = GetComponent<itemget>();
+        CompassCheck();
         //ボタンの有効・無効設定
         North.SetActive(true);
         East.SetActive(false);
@@ -42,6 +45,7 @@ public class viewchange : MonoBehaviour
         compass = (compass + 1) % 4;
         CompassCheck();
     }
+    
     //コンパスを確認して向きを変えたい
     private void CompassCheck()
     {
@@ -52,6 +56,8 @@ public class viewchange : MonoBehaviour
                 East.SetActive(false);
                 South.SetActive(false);
                 West.SetActive(false);
+                chat.text = "";
+                itemgetcs.North_Item();
                 Debug.Log("North");
                 break;
             case 1:
@@ -59,6 +65,7 @@ public class viewchange : MonoBehaviour
                 East.SetActive(true);
                 South.SetActive(false);
                 West.SetActive(false);
+                itemgetcs.East_Item();
                 Debug.Log("East");
                 break;
             case 2:
@@ -66,6 +73,8 @@ public class viewchange : MonoBehaviour
                 East.SetActive(false);
                 South.SetActive(true);
                 West.SetActive(false);
+                itemgetcs.South_Item();
+                chat.text = "South";
                 Debug.Log("South");
                 break;
             case 3:
@@ -73,6 +82,7 @@ public class viewchange : MonoBehaviour
                 East.SetActive(false);
                 South.SetActive(false);
                 West.SetActive(true);
+                itemgetcs.West_Item();
                 Debug.Log("West");
                 break;
         }
