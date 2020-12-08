@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -138
-    y: 135
+    x: 96
+    y: 203
     width: 1355
     height: 817
   m_ShowMode: 4
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 106
+  controlID: 40
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 107
+  controlID: 41
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 108
+  controlID: 42
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -294,8 +294,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 369
-    y: 165
+    x: 603
+    y: 233
     width: 847
     height: 475
   m_ViewDataDictionary: {fileID: 0}
@@ -383,8 +383,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -138
-    y: 165
+    x: 96
+    y: 233
     width: 291
     height: 746
   m_ViewDataDictionary: {fileID: 0}
@@ -421,17 +421,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 154
-    y: 165
+    x: 388
+    y: 233
     width: 213
     height: 475
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 48330000
-      m_LastClickedID: 13128
-      m_ExpandedIDs: 70fbffff82330000
+      scrollPos: {x: 0, y: 10}
+      m_SelectedIDs: 5a330000
+      m_LastClickedID: 13146
+      m_ExpandedIDs: 26fbffffb8330000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -617,8 +617,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 154
-    y: 661
+    x: 388
+    y: 729
     width: 1062
     height: 250
   m_ViewDataDictionary: {fileID: 0}
@@ -635,11 +635,11 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Material/haikei
+    - Assets/Scenes/Material/komono
   m_ViewMode: 1
   m_StartGridSize: 74
   m_LastFolders:
-  - Assets/Scenes/Material/haikei
+  - Assets/Scenes/Material/komono
   m_LastFoldersGridSize: 74
   m_LastProjectPath: "C:\\Users\\ainei\\OneDrive\\\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\\GitHub\\Dekai-TeamD-\\Dekai(TeamD)"
   m_LockTracker:
@@ -648,7 +648,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 0e350000
     m_LastClickedID: 13582
-    m_ExpandedIDs: 00000000ce340000d4340000d634000000ca9a3b
+    m_ExpandedIDs: 0000000002350000083500000a35000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -676,7 +676,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ce340000
+    m_ExpandedIDs: 0000000002350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
