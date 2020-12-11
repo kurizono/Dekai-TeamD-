@@ -29,7 +29,7 @@ public class itemget : MonoBehaviour
     public GameObject item_myth, item_note, item_pillow, item_sign;
     public GameObject item_stick, item_sword, item_whitesweet, item_mazai;
 
-
+//AwakeはStartより優先されるのでviewchangeで使われるbutton系の宣言を先にしておく
 private void Awake()
     {
         button_all = new Button[16]
@@ -59,6 +59,7 @@ private void Awake()
     {
         viewchangecs = GetComponent<viewchange>();
         //North_Item();
+        //button_allをクリックしたらItem_Clickが起きる
         for (int i = 0; i < 16; i++)
         {
             GameObject item = item_all[i];
@@ -72,7 +73,7 @@ private void Awake()
     {
 
     }
-    //アイテム欄の旗が現れてゲーム画面の旗が消える
+    //ボタン消してアイテムを表示する
     private void Item_Click(GameObject item_gameobject, GameObject item_button)
     {
         item_gameobject.SetActive(true);
