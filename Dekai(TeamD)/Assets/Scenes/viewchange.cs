@@ -58,7 +58,6 @@ public class viewchange : MonoBehaviour
                 West.SetActive(false);
                 chat.text = "";
                 itemgetcs.North_Item();
-                Debug.Log("North");
                 break;
             case 1:
                 North.SetActive(false);
@@ -66,7 +65,6 @@ public class viewchange : MonoBehaviour
                 South.SetActive(false);
                 West.SetActive(false);
                 itemgetcs.East_Item();
-                Debug.Log("East");
                 break;
             case 2:
                 North.SetActive(false);
@@ -74,8 +72,6 @@ public class viewchange : MonoBehaviour
                 South.SetActive(true);
                 West.SetActive(false);
                 itemgetcs.South_Item();
-                chat.text = "South";
-                Debug.Log("South");
                 break;
             case 3:
                 North.SetActive(false);
@@ -83,7 +79,6 @@ public class viewchange : MonoBehaviour
                 South.SetActive(false);
                 West.SetActive(true);
                 itemgetcs.West_Item();
-                Debug.Log("West");
                 break;
         }
     }
