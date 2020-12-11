@@ -8,173 +8,141 @@ public class itemget : MonoBehaviour
     //viewchangeスクリプトをviewchangecsという名前で定義づけてる感じなのかなあ…
     viewchange viewchangecs;
 
-    public Button button_flag, button_adalt, button_cat, button_cloth, button_dictionary;
+    //配列(連続した箱を作るイメージ)
+    private Button[] button_all;
+
+    public Button button_adalt, button_cat, button_cloth, button_dictionary;
     public Button button_diy, button_general, button_log, button_mazai;
     public Button button_mypipe, button_myth, button_note, button_pillow;
     public Button button_sign, button_stick, button_sword, button_whitesweet;
-    public GameObject g_button_flag, g_button_adalt, g_button_cat, g_button_cloth, g_button_dictionary;
-    public GameObject g_button_diy, g_button_log, g_button_mazai, g_button_mypipe;
-    public GameObject g_button_myth, g_button_note, g_button_pillow, g_button_sign;
-    public GameObject g_button_stick, g_button_sword, g_button_whitesweet, g_button_general;
-    public GameObject item_flag, item_adalt, item_cat, item_cloth, item_dictionary;
+
+    //buttonとitemを同時に参照できる(？？？？？？？？？？？？？？？？)
+    private int[] button_north;
+    private int[] button_east;
+    private int[] button_south;
+    private int[] button_west;
+
+    private GameObject[] item_all;
+    
+    public GameObject item_adalt, item_cat, item_cloth, item_dictionary;
     public GameObject item_diy, item_general, item_log, item_mypipe;
     public GameObject item_myth, item_note, item_pillow, item_sign;
     public GameObject item_stick, item_sword, item_whitesweet, item_mazai;
+
+
+private void Awake()
+    {
+        button_all = new Button[16]
+        {
+        button_adalt, button_cat, button_cloth, button_dictionary,
+        button_diy, button_general, button_log, button_mazai,
+        button_mypipe, button_myth, button_note, button_pillow,
+        button_sign, button_stick, button_sword, button_whitesweet };
+        item_all = new GameObject[16]
+        {
+            item_adalt, item_cat, item_cloth, item_dictionary,
+            item_diy, item_general, item_log, item_mazai,
+            item_mypipe, item_myth, item_note, item_pillow,
+            item_sign, item_stick, item_sword, item_whitesweet,
+        };
+        button_east = new int[3] { 0, 5, 11 };
+        button_north = new int[5] { 1, 6, 7, 8, 12 };
+        button_west = new int[4] { 3, 4, 9, 10 };
+        button_south = new int[4] { 2, 13, 14, 15 };
+        for (int i = 0; i < 16; i++)
+        {
+            item_all[i].SetActive(false);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        North_Item();
         viewchangecs = GetComponent<viewchange>();
-        item_flag.SetActive(false);
-        item_adalt.SetActive(false);
-        item_cat.SetActive(false);
-        item_cloth.SetActive(false);
-        item_dictionary.SetActive(false);
-        item_diy.SetActive(false);
-        item_general.SetActive(false);
-        item_log.SetActive(false);
-        item_mazai.SetActive(false);
-        item_mypipe.SetActive(false);
-        item_myth.SetActive(false);
-        item_note.SetActive(false);
-        item_pillow.SetActive(false);
-        item_sign.SetActive(false);
-        item_stick.SetActive(false);
-        item_sword.SetActive(false);
-        item_whitesweet.SetActive(false);
-        //button_flag(ゲーム画面の旗)をクリックしたら
-        button_flag.onClick.AddListener(Flag_Click);
-        button_adalt.onClick.AddListener(Adalt_Click);
-        button_cat.onClick.AddListener(Cat_Click);
-        button_cloth.onClick.AddListener(Cloth_Click);
-        button_dictionary.onClick.AddListener(Dictionary_Click);
-        button_diy.onClick.AddListener(Diy_Click);
-        button_general.onClick.AddListener(General_Click);
-        button_mazai.onClick.AddListener(Mazai_Click);
-        button_mypipe.onClick.AddListener(Mypipe_Click);
-        button_myth.onClick.AddListener(Myth_Click);
-        button_note.onClick.AddListener(Note_Click);
-        button_pillow.onClick.AddListener(Pillow_Click);
-        button_sign.onClick.AddListener(Sign_Click);
-        button_stick.onClick.AddListener(Stick_Click);
-        button_sword.onClick.AddListener(Sword_Click);
-        button_whitesweet.onClick.AddListener(Whitesweet_Click);
-        button_log.onClick.AddListener(Log_Click);
+        //North_Item();
+        for (int i = 0; i < 16; i++)
+        {
+            GameObject item = item_all[i];
+            GameObject button = button_all[i].gameObject;
+            button_all[i].onClick.AddListener(() => { Item_Click(item, button); });
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     //アイテム欄の旗が現れてゲーム画面の旗が消える
-    private void Flag_Click()
+    private void Item_Click(GameObject item_gameobject, GameObject item_button)
     {
-        item_flag.SetActive(true);
-        g_button_flag.SetActive(false);
-    }
-    private void Adalt_Click()
-    {
-        item_adalt.SetActive(true);
-        g_button_adalt.SetActive(false);
-    }
-    private void Cat_Click()
-    {
-        item_cat.SetActive(true);
-        g_button_cat.SetActive(false);
-    }
-    private void Dictionary_Click()
-    {
-        item_dictionary.SetActive(true);
-        g_button_dictionary.SetActive(false);
-    }
-    private void Diy_Click()
-    {
-        item_diy.SetActive(true);
-        g_button_diy.SetActive(false);
-    }
-    private void General_Click()
-    {
-        item_general.SetActive(true);
-        g_button_general.SetActive(false);
-    }
-    private void Mazai_Click()
-    {
-        item_mazai.SetActive(true);
-        g_button_mazai.SetActive(false);
-    }
-    private void Log_Click()
-    {
-        item_log.SetActive(true);
-        g_button_log.SetActive(false);
-    }
-    private void Note_Click()
-    {
-        item_note.SetActive(true);
-        g_button_note.SetActive(false);
-    }
-    private void Mypipe_Click()
-    {
-        item_mypipe.SetActive(true);
-        g_button_mypipe.SetActive(false);
-    }
-    private void Myth_Click()
-    {
-        item_myth.SetActive(true);
-        g_button_myth.SetActive(false);
-    }
-    private void Pillow_Click()
-    {
-        item_pillow.SetActive(true);
-        g_button_pillow.SetActive(false);
-    }
-    private void Sign_Click()
-    {
-        item_sign.SetActive(true);
-        g_button_sign.SetActive(false);
-    }
-    private void Stick_Click()
-    {
-        item_stick.SetActive(true);
-        g_button_stick.SetActive(false);
-    }
-    private void Sword_Click()
-    {
-        item_sword.SetActive(true);
-        g_button_sword.SetActive(false);
-    }
-    private void Whitesweet_Click()
-    {
-        item_whitesweet.SetActive(true);
-        g_button_whitesweet.SetActive(false);
-    }
-    private void Cloth_Click()
-    {
-        item_cloth.SetActive(true);
-        g_button_cloth.SetActive(false);
+        item_gameobject.SetActive(true);
+        item_button.SetActive(false);
     }
     //北のアイテム
     public void North_Item()
     {
-        g_button_flag.SetActive(false);
+        AllItem_False();
+        //button_northの配列数だけ繰り返す
+        for (int i = 0; i < button_north.Length; i++)
+        {
+            //item_allの内のbutton_north[i]がactiveselfじゃない(取得されてない)
+            if (!item_all[button_north[i]].activeSelf)
+            {
+                //それのSetActiveをtrueにする
+                button_all[button_north[i]].gameObject.SetActive(true);
+            }
+        }
     }
     //東のアイテム
     public void East_Item()
     {
-        g_button_flag.SetActive(false);
+        AllItem_False();
+        //button_eastの配列数だけ繰り返す
+        for (int i = 0; i < button_east.Length; i++)
+        {
+            //item_allの内のbutton_east[i]がactiveselfじゃない(取得されてない)
+            if (!item_all[button_east[i]].activeSelf)
+            {
+                //それのSetActiveをtrueにする
+                button_all[button_east[i]].gameObject.SetActive(true);
+            }
+        }
     }
     //南のアイテム
     public void South_Item()
     {
-        if (!item_flag.activeSelf)
+        AllItem_False();
+        //button_southの配列数だけ繰り返す
+        for (int i = 0; i < button_south.Length; i++)
         {
-            g_button_flag.SetActive(true);
+            //item_allの内のbutton_south[i]がactiveselfじゃない(取得されてない)
+            if (!item_all[button_south[i]].activeSelf)
+            {
+                //それのSetActiveをtrueにする
+                button_all[button_south[i]].gameObject.SetActive(true);
+            }
         }
-        
     }
     //西のアイテム
     public void West_Item()
     {
-        g_button_flag.SetActive(false);
+        AllItem_False();
+        //button_westの配列数だけ繰り返す
+        for (int i = 0; i < button_west.Length; i++)
+        {
+            //item_allの内のbutton_west[i]がactiveselfじゃない(取得されてない)
+            if (!item_all[button_west[i]].activeSelf)
+            {
+                //それのSetActiveをtrueにする
+                button_all[button_west[i]].gameObject.SetActive(true);
+            }
+        }
+    }
+    private void AllItem_False()
+    {
+        for (int i = 0; i < 16; i++)
+        {
+            button_all[i].gameObject.SetActive(false);
+        }
     }
 }
