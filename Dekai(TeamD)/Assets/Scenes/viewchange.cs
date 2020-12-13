@@ -12,7 +12,7 @@ public class viewchange : MonoBehaviour
     public Button Left, Right;
     public Text chat;
     public int compass = 0;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +31,8 @@ public class viewchange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-     
+
+
     }
     //ボタンを押したらどうなるか
     private void Left_Click()
@@ -45,7 +45,7 @@ public class viewchange : MonoBehaviour
         compass = (compass + 1) % 4;
         CompassCheck();
     }
-    
+
     //コンパスを確認して向きを変えたい
     private void CompassCheck()
     {

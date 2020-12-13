@@ -8,7 +8,7 @@ public class Firstalert : MonoBehaviour
 {
     public Text alert;
     //ここの数をいじると、表示の秒数等が変わるようにしました(1,3,4なら、1秒で透明から不透明、1秒から3秒まで不透明、3秒から4秒までで不透明から透明)
-    private int[] alerttime = new int[3] {1,3,4};
+    private int[] alerttime = new int[3] { 1, 3, 4 };
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class Firstalert : MonoBehaviour
         //alerttime[1]秒からalerttime[2]秒まで
         else if (Time.time < alerttime[2])
         {
-            alert.color = new Color(1, 1, 1, (alerttime[2] - alerttime[1]) - (Mathf.Sin((Time.time - alerttime[1]) * Mathf.PI / 2))/(alerttime[2] - alerttime[1]));
+            alert.color = new Color(1, 1, 1, (alerttime[2] - alerttime[1]) - (Mathf.Sin((Time.time - alerttime[1]) * Mathf.PI / 2)) / (alerttime[2] - alerttime[1]));
         }
         if (Time.time > alerttime[2])
         {

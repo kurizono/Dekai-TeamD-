@@ -22,15 +22,15 @@ public class itemget : MonoBehaviour
     private int[] button_south;
     private int[] button_west;
 
-    private GameObject[] item_all;
-    
-    public GameObject item_adalt, item_cat, item_cloth, item_dictionary;
-    public GameObject item_diy, item_general, item_log, item_mypipe;
-    public GameObject item_myth, item_note, item_pillow, item_sign;
-    public GameObject item_stick, item_sword, item_whitesweet, item_mazai;
+    private Button[] getitem_all;
 
-//AwakeはStartより優先されるのでviewchangeで使われるbutton系の宣言を先にしておく
-private void Awake()
+    public Button getitem_adalt, getitem_cat, getitem_cloth, getitem_dictionary;
+    public Button getitem_diy, getitem_general, getitem_log, getitem_mazai;
+    public Button getitem_mypipe, getitem_myth, getitem_note, getitem_pillow;
+    public Button getitem_sign, getitem_stick, getitem_sword, getitem_whitesweet;
+
+    //AwakeはStartより優先されるのでviewchangeで使われるbutton系の宣言を先にしておく
+    private void Awake()
     {
         button_all = new Button[16]
         {
@@ -38,12 +38,12 @@ private void Awake()
         button_diy, button_general, button_log, button_mazai,
         button_mypipe, button_myth, button_note, button_pillow,
         button_sign, button_stick, button_sword, button_whitesweet };
-        item_all = new GameObject[16]
+        getitem_all = new Button[16]
         {
-            item_adalt, item_cat, item_cloth, item_dictionary,
-            item_diy, item_general, item_log, item_mazai,
-            item_mypipe, item_myth, item_note, item_pillow,
-            item_sign, item_stick, item_sword, item_whitesweet,
+            getitem_adalt, getitem_cat, getitem_cloth, getitem_dictionary,
+            getitem_diy, getitem_general, getitem_log, getitem_mazai,
+            getitem_mypipe, getitem_myth, getitem_note, getitem_pillow,
+            getitem_sign, getitem_stick, getitem_sword, getitem_whitesweet,
         };
         button_east = new int[3] { 0, 5, 11 };
         button_north = new int[5] { 1, 6, 7, 8, 12 };
@@ -51,7 +51,7 @@ private void Awake()
         button_south = new int[4] { 2, 13, 14, 15 };
         for (int i = 0; i < 16; i++)
         {
-            item_all[i].SetActive(false);
+            getitem_all[i].gameObject.SetActive(false);
         }
     }
     // Start is called before the first frame update
@@ -62,7 +62,7 @@ private void Awake()
         //button_allをクリックしたらItem_Clickが起きる
         for (int i = 0; i < 16; i++)
         {
-            GameObject item = item_all[i];
+            GameObject item = getitem_all[i].gameObject;
             GameObject button = button_all[i].gameObject;
             button_all[i].onClick.AddListener(() => { Item_Click(item, button); });
         }
@@ -87,7 +87,7 @@ private void Awake()
         for (int i = 0; i < button_north.Length; i++)
         {
             //item_allの内のbutton_north[i]がactiveselfじゃない(取得されてない)
-            if (!item_all[button_north[i]].activeSelf)
+            if (!getitem_all[button_north[i]].gameObject.activeSelf)
             {
                 //それのSetActiveをtrueにする
                 button_all[button_north[i]].gameObject.SetActive(true);
@@ -102,7 +102,7 @@ private void Awake()
         for (int i = 0; i < button_east.Length; i++)
         {
             //item_allの内のbutton_east[i]がactiveselfじゃない(取得されてない)
-            if (!item_all[button_east[i]].activeSelf)
+            if (!getitem_all[button_east[i]].gameObject.activeSelf)
             {
                 //それのSetActiveをtrueにする
                 button_all[button_east[i]].gameObject.SetActive(true);
@@ -117,7 +117,7 @@ private void Awake()
         for (int i = 0; i < button_south.Length; i++)
         {
             //item_allの内のbutton_south[i]がactiveselfじゃない(取得されてない)
-            if (!item_all[button_south[i]].activeSelf)
+            if (!getitem_all[button_south[i]].gameObject.activeSelf)
             {
                 //それのSetActiveをtrueにする
                 button_all[button_south[i]].gameObject.SetActive(true);
@@ -132,7 +132,7 @@ private void Awake()
         for (int i = 0; i < button_west.Length; i++)
         {
             //item_allの内のbutton_west[i]がactiveselfじゃない(取得されてない)
-            if (!item_all[button_west[i]].activeSelf)
+            if (!getitem_all[button_west[i]].gameObject.activeSelf)
             {
                 //それのSetActiveをtrueにする
                 button_all[button_west[i]].gameObject.SetActive(true);
