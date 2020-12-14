@@ -10,7 +10,6 @@ public class viewchange : MonoBehaviour
     //ゲームオブジェクト、ボタンの設定
     public GameObject North, East, South, West;
     public Button Left, Right;
-    public Text chat;
     public int compass = 0;
 
     // Start is called before the first frame update
@@ -56,7 +55,6 @@ public class viewchange : MonoBehaviour
                 East.SetActive(false);
                 South.SetActive(false);
                 West.SetActive(false);
-                chat.text = "";
                 itemgetcs.North_Item();
                 break;
             case 1:

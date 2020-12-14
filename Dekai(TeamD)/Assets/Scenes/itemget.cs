@@ -22,7 +22,7 @@ public class itemget : MonoBehaviour
     private int[] button_south;
     private int[] button_west;
 
-    private Button[] getitem_all;
+    public Button[] getitem_all;
 
     public Button getitem_adalt, getitem_cat, getitem_cloth, getitem_dictionary;
     public Button getitem_diy, getitem_general, getitem_log, getitem_mazai;
