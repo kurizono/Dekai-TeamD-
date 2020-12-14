@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleButton : MonoBehaviour
 {
-    private GameObject start_object, story_object, credit_object, return_object;
-    public GameObject credittext_object;
+    public GameObject storytext_object, credittext_object;
     public Button start_button, story_button, credit_button, return_button;
 
 
@@ -29,15 +28,12 @@ public class TitleButton : MonoBehaviour
 
     private void FirstPosi()
     {
-        start_object = start_button.gameObject;
-        story_object = story_button.gameObject;
-        credit_object = credit_button.gameObject;
-        return_object = return_button.gameObject;
-        start_object.SetActive(true);
-        story_object.SetActive(true);
-        credit_object.SetActive(true);
+        start_button.gameObject.SetActive(true);
+        story_button.gameObject.SetActive(true);
+        storytext_object.SetActive(false);
+        credit_button.gameObject.SetActive(true);
         credittext_object.SetActive(false);
-        return_object.SetActive(false);
+        return_button.gameObject.SetActive(false);
     }
 
 
@@ -48,18 +44,27 @@ public class TitleButton : MonoBehaviour
     }
     private void Story_Click()
     {
-
+        All_False();
+        storytext_object.SetActive(true);
+        return_button.gameObject.SetActive(true);
     }
     private void Credit_Click()
     {
-        start_object.SetActive(false);
-        story_object.SetActive(false);
-        credit_object.SetActive(false);
+        All_False();
         credittext_object.SetActive(true);
-        return_object.SetActive(true);
+        return_button.gameObject.SetActive(true);
     }
     private void Return_Click()
     {
         FirstPosi();
+    }
+
+    private void All_False() 
+    {
+        start_button.gameObject.SetActive(false);
+        story_button.gameObject.SetActive(false);
+        credit_button.gameObject.SetActive(false);
+        credittext_object.SetActive(false);
+        return_button.gameObject.SetActive(false);
     }
 }
