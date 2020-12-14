@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scenes\Firstalert.cs" />
+    <Compile Include="Assets\Scenes\ItemLoupe.cs" />
     <Compile Include="Assets\Scenes\ItemText.cs" />
     <Compile Include="Assets\Scenes\TitleButton.cs" />
     <Compile Include="Assets\Scenes\itemget.cs" />

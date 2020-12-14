@@ -59,7 +59,7 @@ public class TitleButton : MonoBehaviour
         FirstPosi();
     }
 
-    private void All_False() 
+    private void All_False()
     {
         start_button.gameObject.SetActive(false);
         story_button.gameObject.SetActive(false);
