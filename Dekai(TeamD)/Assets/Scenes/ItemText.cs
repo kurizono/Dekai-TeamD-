@@ -23,7 +23,7 @@ public class ItemText : MonoBehaviour
         itemgetcs = GetComponent<itemget>();
         itemsetumei.text = "";
 
-        for(int i = 0; i < itemgetcs.getitem_all.Length; i++)
+        for (int i = 0; i < itemgetcs.getitem_all.Length; i++)
         {
             string input_text = item_text[i];
             itemgetcs.getitem_all[i].onClick.AddListener(() => { Item_Click(input_text); });
