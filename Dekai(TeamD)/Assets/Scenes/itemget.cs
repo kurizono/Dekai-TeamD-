@@ -11,16 +11,19 @@ public class itemget : MonoBehaviour
     //配列(連続した箱を作るイメージ)
     private Button[] button_all;
 
-    public Button button_adalt, button_cat, button_cloth, button_dictionary;
-    public Button button_diy, button_general, button_log, button_mazai;
-    public Button button_mypipe, button_myth, button_note, button_pillow;
-    public Button button_sign, button_stick, button_sword, button_whitesweet;
+    public Button button_closet, button_upperbed, button_underbed;
 
-    //buttonとitemを同時に参照できる(？？？？？？？？？？？？？？？？)
+    public Button button_cat, button_dictionary;
+    public Button button_diy, button_log, button_mazai;
+    public Button button_mypipe, button_myth, button_note;
+    public Button button_sign;
+
+    //buttonとitemを同時に参照できる
     private int[] button_north;
     private int[] button_east;
     private int[] button_south;
     private int[] button_west;
+    private int[] button_desk;
 
     public Button[] getitem_all;
 
@@ -34,22 +37,24 @@ public class itemget : MonoBehaviour
     {
         button_all = new Button[16]
         {
-        button_adalt, button_cat, button_cloth, button_dictionary,
-        button_diy, button_general, button_log, button_mazai,
-        button_mypipe, button_myth, button_note, button_pillow,
-        button_sign, button_stick, button_sword, button_whitesweet };
+            button_underbed, button_cat, button_closet, button_dictionary,
+            button_diy, button_underbed, button_log, button_mazai,
+            button_mypipe, button_myth, null, button_upperbed,
+            button_sign, button_closet, button_closet, button_closet
+        };
         getitem_all = new Button[16]
         {
             getitem_adalt, getitem_cat, getitem_cloth, getitem_dictionary,
             getitem_diy, getitem_general, getitem_log, getitem_mazai,
             getitem_mypipe, getitem_myth, getitem_note, getitem_pillow,
-            getitem_sign, getitem_stick, getitem_sword, getitem_whitesweet,
+            getitem_sign, getitem_stick, getitem_sword, getitem_whitesweet
         };
         button_east = new int[3] { 0, 5, 11 };
-        button_north = new int[5] { 1, 6, 7, 8, 12 };
-        button_west = new int[4] { 3, 4, 9, 10 };
+        button_north = new int[0] {};
+        button_west = new int[4] { 3, 4, 7, 9};
         button_south = new int[4] { 2, 13, 14, 15 };
-        for (int i = 0; i < 16; i++)
+        button_desk = new int[3] { 1, 6, 8 };
+        for (int i = 0; i < button_all.Length; i++)
         {
             getitem_all[i].gameObject.SetActive(false);
         }
@@ -58,27 +63,46 @@ public class itemget : MonoBehaviour
     void Start()
     {
         viewchangecs = GetComponent<viewchange>();
-        //North_Item();
         //button_allをクリックしたらItem_Clickが起きる
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < button_all.Length; i++)
         {
-            GameObject item = getitem_all[i].gameObject;
-            GameObject button = button_all[i].gameObject;
-            button_all[i].onClick.AddListener(() => { Item_Click(item, button); });
+            if (button_all[i] != null)
+            {
+                GameObject item = getitem_all[i].gameObject;
+                GameObject button = button_all[i].gameObject;
+                if (button != button_underbed.gameObject)
+                {
+                    button_all[i].onClick.AddListener(() => { Item_Click(item, button); });
+                }
+            }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        button_underbed.onClick.AddListener(Bed_Click);
 
     }
+
     //ボタン消してアイテムを表示する
-    private void Item_Click(GameObject item_gameobject, GameObject item_button)
+    public void Item_Click(GameObject item_gameobject, GameObject item_button)
     {
         item_gameobject.SetActive(true);
         item_button.SetActive(false);
+        
     }
+    private void Bed_Click()
+    {
+        if(getitem_stick.gameObject.activeSelf == true)
+        {
+            button_underbed.gameObject.SetActive(false);
+            getitem_adalt.gameObject.SetActive(true);
+            getitem_general.gameObject.SetActive(true);
+        }
+        else
+        {
+
+        }
+    }
+
+
     //北のアイテム
     public void North_Item()
     {
@@ -108,6 +132,7 @@ public class itemget : MonoBehaviour
                 button_all[button_east[i]].gameObject.SetActive(true);
             }
         }
+        button_underbed.gameObject.SetActive(true);
     }
     //南のアイテム
     public void South_Item()
@@ -123,6 +148,7 @@ public class itemget : MonoBehaviour
                 button_all[button_south[i]].gameObject.SetActive(true);
             }
         }
+        button_closet.gameObject.SetActive(true);
     }
     //西のアイテム
     public void West_Item()
@@ -139,11 +165,33 @@ public class itemget : MonoBehaviour
             }
         }
     }
+    public void Desk_Item(int num)
+    {
+        for (int i = 0; i < button_desk.Length; i++) 
+        {
+            button_all[button_desk[i]].gameObject.SetActive(false);
+        }
+        if(num != 0)
+        {
+            if (!getitem_all[button_desk[num - 1]].gameObject.activeSelf)
+            {
+                //それのSetActiveをtrueにする
+                button_all[button_desk[num - 1]].gameObject.SetActive(true);
+            }
+        }
+    }
+
+
     private void AllItem_False()
     {
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < button_all.Length; i++)
         {
-            button_all[i].gameObject.SetActive(false);
+            if (button_all[i] != null)
+            {
+                button_all[i].gameObject.SetActive(false);
+            }
         }
+        button_underbed.gameObject.SetActive(false);
+        button_closet.gameObject.SetActive(false);
     }
 }
